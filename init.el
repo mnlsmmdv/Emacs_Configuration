@@ -1,5 +1,7 @@
 ;; Author: Ahmed Affaan
+;; Country: Maldives
 ;; Title: init.el
+;; Language: Emacs Lisp
 ;; Date: 10/09/2021
 ;; Description: Personal init.el configuration for GNU Emacs.
 ;;              This file was written in GNU Emacs version "26.3"
@@ -146,7 +148,7 @@
           centaur-tabs-modifier-marker ".")
     (centaur-tabs-mode t))
 
-;; Removes compile log if there are no erros.
+;; Removes the compile log if there are no erros.
 (add-hook 'compilation-finish-functions
   (lambda (buf str)
     (if (null (string-match ".*exited abnormally.*" str))
