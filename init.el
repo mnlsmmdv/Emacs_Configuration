@@ -2,15 +2,15 @@
 ;; Country: Maldives
 ;; Title: init.el
 ;; Language: Emacs Lisp
-;; Date: 10/09/2021
+;; Date: 11/09/2021
 ;; Description: Personal init.el configuration file for GNU Emacs.
 ;;              This file was written in GNU Emacs version "26.3"
-;;              on Linux Mint XFCE.          
+;;              on Linux Mint XFCE.
 
 ;; Configuration start.
-;; Initializing Emacs packages.
+;; Initializing GNU Emacs packages.
 (require 'package)
-(setq package-enable-at-startup nil)
+(setq package-enable-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
@@ -20,24 +20,14 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Checks if doom-themes are installed. If not installs them.
-(unless (package-installed-p 'doom-themes)
-  (package-refresh-contents)
-  (package-install 'doom-themes))
+;; Theme for GNU Emacs
+(load-theme 'misterioso)
 
-;; Checks if doom-modeline is installed. If not installs them.
-(unless (package-installed-p 'doom-modeline)
-  (package-refresh-contents)
-  (package-install 'doom-modeline))
-
-;; Installs Doom Emacs's mode line package
-(use-package doom-modeline
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
-
-;; Installs Doom Emacs's icon package.
-(use-package all-the-icons
-  :ensure t)
+;; Cursor type changed to I-beam "|".
+(setq-default cursor-type 'bar)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; Stops system from creating and saving backup files.
 (setq make-backup-file nil)
@@ -65,24 +55,6 @@
 (when window-system (global-hl-line-mode t))
 (when window-system (global-prettify-symbols-mode t))
 
-;; Shows below which keys are used.
-(use-package which-key
-  :ensure t
-  :init
-  (which-key-mode))
-
-;; Cursor type changed to I-beam "|".
-(setq-default cursor-type 'bar)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Deletes GNU Emacs default startup message.
-(setq inhibit-startup-message t)
-
-;; Add Melpa install package configuration down below from "https://melpa.org/#/".
-;; Change comment above to whatever suits you and delete this comment.
-
 ;; Selects the selected line and replaces with something else.
 (delete-selection-mode 1)
 
@@ -95,6 +67,40 @@
 (setq ido-anywhere t)
 (setq ido-enable-flex-matching t)
 (ido-mode t)
+
+;; Shows below which keys are used.
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+
+;; Deletes GNU Emacs default startup message.
+(setq inhibit-startup-message t)
+
+;; MELPA package installer configuration.
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+;; More MELPA configurations (automated)
+;; remove "centaur-tabs" if you do not want to install it and use it.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (centaur-tabs flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 ;; Installs projectile package which helps navigate project files.
 (use-package projectile
@@ -111,8 +117,8 @@
     (setq dashboard-items '((recents . 1)
                             (projects . 1)))
     (setq dashboard-banner-logo-title "Welcome Ahmed Affaan :)")
-    (setq dashboard-set-file-icons t)
-    (setq dashboard-set-heading-icons t)
+    (setq dashboard-set-file-icons nil)
+    (setq dashboard-set-heading-icons nil)
     (setq dashboard-footer-messages '("Fuck the mahujanun! ;)"))
     (setq dashboard-set-init-info t)
     )
@@ -137,16 +143,17 @@
   (global-flycheck-mode))
 
 ;; Tab windows for GNU Emacs.
-(use-package centaur-tabs
-  :ensure t
-  :config
-    (setq centaur-tabs-set-bar 'over
-          centaur-tabs-set-icons t
-          centaur-tabs-gray-out-icons 'buffer
-          centaur-tabs-height 24
-          centaur-tabs-set-modified-marker t
-          centaur-tabs-modifier-marker ".")
-    (centaur-tabs-mode t))
+;; Uncomment configuration for centaur-tabs if you choose to use it.
+;;(use-package centaur-tabs
+  ;;:ensure t
+  ;;:config
+    ;;(setq centaur-tabs-set-bar 'over
+          ;;centaur-tabs-set-icons t
+          ;;centaur-tabs-gray-out-icons 'buffer
+          ;;centaur-tabs-height 24
+          ;;centaur-tabs-set-modified-marker t
+          ;;centaur-tabs-modifier-marker ".")
+    ;;(centaur-tabs-mode t))
 
 ;; Removes the compile log if there are no erros.
 (add-hook 'compilation-finish-functions
@@ -159,4 +166,4 @@
            (get-buffer-create "*compilation*"))
           (message "No Compilation Errors!")))))
 
-;; Configuration end. 
+;; Configuration end.
