@@ -86,7 +86,8 @@
 (package-initialize)
 
 ;; More MELPA configurations (automated)
-;; remove "centaur-tabs" if you do not want to install it and use it.
+;; add "centaur-tabs" if you want to install it and use it.
+;; include it after "quote"
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,7 +95,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (centaur-tabs flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
+    (flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
