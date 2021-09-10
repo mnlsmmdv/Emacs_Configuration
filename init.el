@@ -6,34 +6,34 @@
 ;;              on Linux Mint XFCE.          
 
 ;; Configuration start.
-;; Initializing Emacs packages
+;; Initializing Emacs packages.
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-;; Checks if use-package package organizer is installed. If not installs it.
+;; Checks if use-package package organizer is installed. If not installs them.
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; Checks if doom-themes are installed. If not installs it.
+;; Checks if doom-themes are installed. If not installs them.
 (unless (package-installed-p 'doom-themes)
   (package-refresh-contents)
   (package-install 'doom-themes))
 
-;; Checks if doom-modeline is installed. If not installs it.
+;; Checks if doom-modeline is installed. If not installs them.
 (unless (package-installed-p 'doom-modeline)
   (package-refresh-contents)
   (package-install 'doom-modeline))
 
-;; Doom Emacs's mode line package
+;; Installs Doom Emacs's mode line package
 (use-package doom-modeline
   :ensure t
   :hook (after-init . doom-modeline-mode))
 
-;; Doom Emacs's icon package.
+;; Installs Doom Emacs's icon package.
 (use-package all-the-icons
   :ensure t)
 
@@ -50,10 +50,10 @@
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
 
-;; Scroll behaviour
+;; Scroll behaviour.
 (setq scroll-conservatively 100)
 
-;; org-bullets package for GNU Emacs org-mode.
+;; Installs org-bullets package for GNU Emacs org-mode.
 (use-package org-bullets
   :ensure t
   :config
@@ -63,13 +63,13 @@
 (when window-system (global-hl-line-mode t))
 (when window-system (global-prettify-symbols-mode t))
 
-;; Shows below which keys are used
+;; Shows below which keys are used.
 (use-package which-key
   :ensure t
   :init
   (which-key-mode))
 
-;; Cursor type changed to I-beam "|"
+;; Cursor type changed to I-beam "|".
 (setq-default cursor-type 'bar)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -78,13 +78,13 @@
 ;; Deletes GNU Emacs default startup message.
 (setq inhibit-startup-message t)
 
-;; Add Melpa install package config down below. 
-;; Change comment to whatever suits you.
+;; Add Melpa install package configuration down below from "https://melpa.org/#/".
+;; Change comment above to whatever suits you and delete this comment.
 
 ;; Selects the selected line and replaces with something else.
 (delete-selection-mode 1)
 
-;; Displays line numbers only in a programming mode
+;; Displays line numbers only in a programming mode.
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Shows matching parenthesis
@@ -94,14 +94,14 @@
 (setq ido-enable-flex-matching t)
 (ido-mode t)
 
-;; Helps finds easier
+;; Installs projectile package which helps navigate project files.
 (use-package projectile
   :ensure t
   :config
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1))
 
-;; Emacs dashboard config
+;; GNU Emacs dashboard configuration.
 (use-package dashboard
   :ensure t
   :init
@@ -117,24 +117,24 @@
   :config
   (dashboard-setup-startup-hook))
 
-;; Treemacs file tree for GNU Emacs
+;; Treemacs file tree for GNU Emacs.
 (use-package treemacs
   :ensure t
   :config
   (setq treemacs-is-never-other-window t))
 
-;; Makes it easy to make and modify the projectile
+;; Makes it easy to navigate through project files.
 (use-package treemacs-projectile
   :after treemacs evil
   :ensure t)
 
-;; Syntax highlighting for GNU Emacs
+;; Syntax checker for GNU Emacs.
 (use-package flycheck
   :ensure t
   :init
   (global-flycheck-mode))
 
-;; Tab windows for GNU Emacs
+;; Tab windows for GNU Emacs.
 (use-package centaur-tabs
   :ensure t
   :config
@@ -146,7 +146,7 @@
           centaur-tabs-modifier-marker ".")
     (centaur-tabs-mode t))
 
-;; Removes compile log if there are no erros
+;; Removes compile log if there are no erros.
 (add-hook 'compilation-finish-functions
   (lambda (buf str)
     (if (null (string-match ".*exited abnormally.*" str))
