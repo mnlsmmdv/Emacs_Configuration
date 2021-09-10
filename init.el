@@ -45,6 +45,14 @@
 ;; Scroll behaviour.
 (setq scroll-conservatively 100)
 
+;; Mode line made by Spacemacs
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (setq powerline-default-seperator (quote arrow))
+  (spaceline-spacemacs-theme))
+  
 ;; Installs org-bullets package for GNU Emacs org-mode.
 (use-package org-bullets
   :ensure t
@@ -52,8 +60,8 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 
 ;; Highlights current line during a GUI Emacs session.
-(when window-system (global-hl-line-mode t))
-(when window-system (global-prettify-symbols-mode t))
+;;(when window-system (global-hl-line-mode t))
+;;(when window-system (global-prettify-symbols-mode t))
 
 ;; Selects the selected line and replaces with something else.
 (delete-selection-mode 1)
@@ -95,13 +103,13 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
+    (spaceline yasnippet-snippets flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:inherit nil :stipple nil :background "#2d3743" :foreground "#e1e1e0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
 
 ;; Installs projectile package which helps navigate project files.
 (use-package projectile
