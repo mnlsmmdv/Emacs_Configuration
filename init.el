@@ -69,16 +69,17 @@
   :init
   (which-key-mode))
 
-;; Cursor type to I-beam "|"
+;; Cursor type changed to I-beam "|"
 (setq-default cursor-type 'bar)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Deletes Emacs startup message
+;; Deletes GNU Emacs default startup message.
 (setq inhibit-startup-message t)
 
-;; Add Melpa install package config down below.
+;; Add Melpa install package config down below. 
+;; Change comment to whatever suits you.
 
 ;; Selects the selected line and replaces with something else.
 (delete-selection-mode 1)
@@ -100,7 +101,7 @@
   (define-key projectile-mode-map (kbd "C-x p") 'projectile-command-map)
   (projectile-mode +1))
 
-;; Emacs dashboard
+;; Emacs dashboard config
 (use-package dashboard
   :ensure t
   :init
@@ -110,7 +111,7 @@
     (setq dashboard-banner-logo-title "Welcome Ahmed Affaan :)")
     (setq dashboard-set-file-icons t)
     (setq dashboard-set-heading-icons t)
-    (setq dashboard-footer-messages '("Who tf likes Barulamaanee anyways"))
+    (setq dashboard-footer-messages '("Fuck the mahujanun! ;)"))
     (setq dashboard-set-init-info t)
     )
   :config
