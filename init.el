@@ -3,7 +3,7 @@
 ;; Title: init.el
 ;; Language: Emacs Lisp
 ;; Date: 10/09/2021
-;; Description: Personal init.el configuration for GNU Emacs.
+;; Description: Personal init.el configuration file for GNU Emacs.
 ;;              This file was written in GNU Emacs version "26.3"
 ;;              on Linux Mint XFCE.          
 
