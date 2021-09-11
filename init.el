@@ -1,37 +1,7 @@
-;; Author: Ahmed Affaan
-;; Country: Maldives
-;; Title: init.el
-;; Language: Emacs Lisp
-;; Date: 11/09/2021
-;; Description: Personal init.el configuration file for GNU Emacs.
-;;              This file was written in GNU Emacs version "26.3"
-;;              on Linux Mint XFCE.
 
-;; Configuration start.
-;; Initializing GNU Emacs packages.
-(require 'package)
-(setq package-enable-startup nil)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-
-;; Checks if use-package package organizer is installed. If not installs them.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; Theme for GNU Emacs
-(load-theme 'misterioso)
-
-;; Cursor type changed to I-beam "|".
-(setq-default cursor-type 'bar)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-
-;; Stops system from creating and saving backup files.
-(setq make-backup-file nil)
-(setq autosave-default nil)
+;; Stops GNU Emacs from creating and saving backup files.
+;;(setq make-backup-file nil)
+;;(setq autosave-default nil)
 
 ;; Yes or No alias changed to y or n.
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -46,18 +16,22 @@
 (setq scroll-conservatively 100)
 
 ;; Mode line made by Spacemacs
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-  (setq powerline-default-seperator (quote arrow))
-  (spaceline-spacemacs-theme))
-  
+;;(use-package spaceline
+  ;;:ensure t
+  ;;:config
+  ;;(require 'spaceline-config)
+  ;;(setq powerline-default-seperator (quote arrow))
+  ;;(spaceline-spacemacs-theme))
+
+(use-package org-tree-slide
+  :custom
+  (org-image-actual-width nil))
+
 ;; Installs org-bullets package for GNU Emacs org-mode.
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+;;(use-package org-bullets
+  ;;:ensure t
+  ;;:config
+  ;;(add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
 
 ;; Highlights current line during a GUI Emacs session.
 ;;(when window-system (global-hl-line-mode t))
@@ -72,44 +46,17 @@
 ;; Shows matching parenthesis
 (show-paren-mode 1)
 
-(setq ido-anywhere t)
-(setq ido-enable-flex-matching t)
-(ido-mode t)
+;; ido file search for GNU Emacs.
+;; Uncomment configurations below if you prefer ido everywhere than dired.
+;;(setq ido-anywhere t)
+;;(setq ido-enable-flex-matching t)
+;;(ido-mode t)
 
 ;; Shows below which keys are used.
 (use-package which-key
   :ensure t
   :init
   (which-key-mode))
-
-;; Deletes GNU Emacs default startup message.
-(setq inhibit-startup-message t)
-
-;; MELPA package installer configuration.
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-
-;; More MELPA configurations (automated)
-;; add "centaur-tabs" if you want to install it and use it.
-;; include it after "quote"
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (spaceline yasnippet-snippets flycheck treemacs-projectile treemacs dashboard projectile which-key org-bullets use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#2d3743" :foreground "#e1e1e0" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "PfEd" :family "DejaVu Sans Mono")))))
 
 ;; Installs projectile package which helps navigate project files.
 (use-package projectile
@@ -126,8 +73,8 @@
     (setq dashboard-items '((recents . 1)
                             (projects . 1)))
     (setq dashboard-banner-logo-title "Welcome Ahmed Affaan :)")
-    (setq dashboard-set-file-icons nil)
-    (setq dashboard-set-heading-icons nil)
+    (setq dashboard-set-file-icons t)
+    (setq dashboard-set-heading-icons t)
     (setq dashboard-footer-messages '("Fuck the mahujanun! ;)"))
     (setq dashboard-set-init-info t)
     )
@@ -153,26 +100,26 @@
 
 ;; Tab windows for GNU Emacs.
 ;; Uncomment configuration for centaur-tabs if you choose to use it.
-;;(use-package centaur-tabs
-  ;;:ensure t
-  ;;:config
-    ;;(setq centaur-tabs-set-bar 'over
-          ;;centaur-tabs-set-icons t
-          ;;centaur-tabs-gray-out-icons 'buffer
-          ;;centaur-tabs-height 24
-          ;;centaur-tabs-set-modified-marker t
-          ;;centaur-tabs-modifier-marker ".")
-    ;;(centaur-tabs-mode t))
+(use-package centaur-tabs
+  :ensure t
+  :config
+    (setq centaur-tabs-set-bar 'over
+          centaur-tabs-set-icons t
+          centaur-tabs-gray-out-icons 'buffer
+          centaur-tabs-height 24
+          centaur-tabs-set-modified-marker t
+          centaur-tabs-modifier-marker ".")
+          (centaur-tabs-mode t))
 
 ;; Removes the compile log if there are no erros.
 (add-hook 'compilation-finish-functions
   (lambda (buf str)
     (if (null (string-match ".*exited abnormally.*" str))
-        ;;no errors, make the compilation window go away in a few seconds
+        no errors, make the compilation window go away in a few seconds
         (progn
           (run-at-time
            "2 sec" nil 'delete-windows-on
            (get-buffer-create "*compilation*"))
-          (message "No Compilation Errors!")))))
+           (message "No Compilation Errors!")))))
 
 ;; Configuration end.
