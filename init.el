@@ -1,7 +1,7 @@
 ;; Author: Ahmed Affaan                           
-;; Title:  helloworld.py                          
+;; Title:  init.el                          
 ;; Status: 13/09/2021                             
-;; Desc: Print function - Hello World
+;; Desc: GNU Emacs config
 
 ;; Note: Commented code is kept for personal preference
 ;;       if you want to use it uncomment the code. 
