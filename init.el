@@ -2,7 +2,6 @@
 ;; Title:  init.el                          
 ;; Status: 13/09/2021                             
 ;; Desc: GNU Emacs config
-
 ;; Note: Commented code is kept for personal preference
 ;;       if you want to use it uncomment the code. 
 
