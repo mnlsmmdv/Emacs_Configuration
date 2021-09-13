@@ -1,7 +1,16 @@
+;; Author: Ahmed Affaan                           
+;; Title:  helloworld.py                          
+;; Status: 13/09/2021                             
+;; Desc: Print function - Hello World
+
+;; Note: Commented code is kept for personal preference
+;;       if you want to use it uncomment the code. 
+
+;; Configuration start
 
 ;; Stops GNU Emacs from creating and saving backup files.
-;;(setq make-backup-file nil)
-;;(setq autosave-default nil)
+(setq make-backup-file nil)
+(setq autosave-default nil)
 
 ;; Yes or No alias changed to y or n.
 (defalias 'yes-or-no-p 'y-or-n-p)
