@@ -2,7 +2,7 @@
 ;; Title:  init.el
 ;; Country: Republic of Maldives
 ;; Status: 13/09/2021                             
-;; Description: GNU Emacs config
+;; Description: GNU Emacs personal configuration.
 ;; Note: Commented code is kept for personal preference
 ;;       if you want to use it uncomment the code. 
 
