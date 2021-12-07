@@ -1,6 +1,6 @@
 ;; Author: Ahmed Affaan                           
 ;; Title:  init.el
-;; Country: Maldives
+;; Country: Republic of Maldives
 ;; Status: 13/09/2021                             
 ;; Description: GNU Emacs config
 ;; Note: Commented code is kept for personal preference
